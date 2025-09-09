@@ -4,171 +4,75 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Keya Chincholkar | Portfolio</title>
-  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
   <style>
-    /* Base styles */
     body {
-      font-family: 'Press Start 2P', cursive, monospace;
+      font-family: Arial, sans-serif;
       margin: 0; padding: 0;
-      background: #0a0a0a;
-      color: #f8f8f2;
-      overflow-x: hidden;
-      position: relative;
+      background: linear-gradient(135deg, #f9f9f9, #eef2f3);
+      color: #333;
+      transition: all 0.3s ease;
     }
-
-    /* Pixel star background */
-    .pixel-star {
-      position: absolute;
-      width: 2px; height: 2px;
-      background: #00fff7;
-      animation: starMove linear infinite;
-    }
-    @keyframes starMove {
-      0% { transform: translateY(0) translateX(0); opacity: 1; }
-      100% { transform: translateY(1000px) translateX(50px); opacity: 0; }
-    }
-
-    /* Header */
     header {
-      background: #111111;
-      color: #ff79c6;
-      text-align: center;
-      padding: 40px 20px;
-      position: relative;
-      border-bottom: 4px solid #50fa7b;
+      background: #003366; color: white;
+      text-align: center; padding: 40px 20px;
+      position: relative; overflow: hidden;
     }
-    header h1 {
-      margin: 0;
-      font-size: 2em;
-      text-shadow: 2px 2px #50fa7b;
-    }
-    header p {
-      font-size: 0.8em;
-      text-shadow: 1px 1px #6272a4;
-    }
-
-    /* Navigation */
+    header h1 { margin: 0; font-size: 2.5em; }
+    header p { font-size: 1.1em; }
     nav {
-      background: #222222;
-      text-align: center;
-      padding: 10px;
-      border-bottom: 3px solid #ffb86c;
+      background: #002244;
+      text-align: center; padding: 10px;
     }
     nav a {
-      color: #8be9fd;
-      margin: 0 10px;
-      text-decoration: none;
-      padding: 5px 8px;
-      border: 2px solid #8be9fd;
-      display: inline-block;
-      transition: 0.2s;
-      position: relative;
+      color: white; margin: 0 15px;
+      text-decoration: none; font-weight: bold;
+      transition: color 0.3s;
     }
-    nav a:hover {
-      color: #282a36;
-      background: #8be9fd;
-      animation: glitch 0.3s;
-    }
-
-    /* Glitch effect */
-    @keyframes glitch {
-      0% { transform: translate(0,0); }
-      20% { transform: translate(-2px,2px); }
-      40% { transform: translate(2px,-2px); }
-      60% { transform: translate(-1px,1px); }
-      80% { transform: translate(1px,-1px); }
-      100% { transform: translate(0,0); }
-    }
-
-    /* Sections */
+    nav a:hover { color: #ffd700; }
     section {
-      padding: 50px; max-width: 900px; margin: 30px auto;
-      background: #111;
-      border: 4px solid #ff79c6;
-      box-shadow: 6px 6px 0 #50fa7b;
-      position: relative;
+      padding: 50px; max-width: 1000px;
+      margin: auto;
     }
-    h2 {
-      color: #ff79c6;
-      font-size: 1.2em;
-      margin-bottom: 20px;
-      text-shadow: 1px 1px #8be9fd;
+    h2 { color: #003366; border-bottom: 2px solid #ddd; padding-bottom: 5px; }
+    ul { line-height: 1.7; }
+
+    /* Floating graphics */
+    .shape {
+      position: absolute; border-radius: 50%;
+      opacity: 0.3; animation: float 8s infinite ease-in-out;
+    }
+    .circle1 { width: 150px; height: 150px; background: #ff9999; top: -30px; left: -30px; }
+    .circle2 { width: 200px; height: 200px; background: #99ccff; bottom: -50px; right: -50px; }
+    @keyframes float {
+      0%,100% { transform: translateY(0); }
+      50% { transform: translateY(-20px); }
     }
 
-    /* Lists */
-    ul, li {
-      line-height: 1.8;
-      font-size: 0.8em;
-    }
-    ul li a {
-      color: #50fa7b;
-      text-decoration: underline dotted;
-      transition: 0.2s;
-    }
-    ul li a:hover { color: #ff79c6; text-decoration: none; animation: glitch 0.3s; }
-
-    /* Footer */
-    footer {
-      text-align: center;
-      padding: 15px;
-      background: #111;
-      color: #ff79c6;
-      border-top: 4px solid #50fa7b;
-      font-size: 0.7em;
-    }
-
-    /* Modal */
+    /* Popup modal */
     .modal {
       display: none; position: fixed; z-index: 1;
       left: 0; top: 0; width: 100%; height: 100%;
-      background: rgba(0,0,0,0.8);
+      background: rgba(0,0,0,0.6);
       justify-content: center; align-items: center;
     }
     .modal-content {
-      background: #222;
-      color: #f8f8f2;
-      border: 4px solid #ff79c6;
-      border-radius: 0;
-      font-family: 'Press Start 2P', monospace;
-      padding: 20px;
-      max-width: 500px;
-      text-align: center;
+      background: white; padding: 20px; border-radius: 10px;
+      width: 70%; max-width: 500px; text-align: center;
     }
     .close {
-      float: right; font-size: 18px; cursor: pointer;
-      color: #ff5555;
+      float: right; font-size: 20px; cursor: pointer;
     }
 
-    /* Dark button */
+    /* Dark mode */
+    .dark-mode { background: #121212; color: #eee; }
+    .dark-mode header { background: #111; }
+    .dark-mode nav { background: #222; }
+    .dark-mode h2 { color: #ffd700; }
     .dark-btn {
       position: fixed; bottom: 20px; right: 20px;
-      padding: 10px 15px; border: 2px solid #50fa7b;
-      border-radius: 0;
-      background: #111;
-      color: #50fa7b;
-      font-family: 'Press Start 2P', cursive;
-      cursor: pointer;
+      padding: 10px 15px; border: none; border-radius: 8px;
+      background: #003366; color: white; cursor: pointer;
     }
-
-    /* Floating pixel shapes */
-    .shape {
-      position: absolute;
-      width: 50px; height: 50px;
-      border-radius: 0;
-      opacity: 0.7;
-      animation: float 5s infinite linear;
-    }
-    .circle1 { background: #ff5555; top: -20px; left: -20px; }
-    .circle2 { background: #50fa7b; bottom: -20px; right: -20px; }
-    @keyframes float {
-      0% { transform: translate(0,0); }
-      50% { transform: translate(0,-15px); }
-      100% { transform: translate(0,0); }
-    }
-
-    /* Dark Mode */
-    .dark-mode { background: #0b0b0b; color: #f8f8f2; }
-    .dark-mode section { background: rgba(20,20,30,0.85); box-shadow: 6px 6px 0 #ffb86c; }
   </style>
 </head>
 <body>
@@ -178,7 +82,7 @@
     <h1>Keya Chincholkar</h1>
     <p>BITS Pilani KK Birla Goa Campus</p>
     <p>B.E. Mechanical Engineering | Minor in Supply Chain Analytics</p>
-    <p>Email: <a href="mailto:f20221292@goa.bits-pilani.ac.in" style="color:#50fa7b;">f20221292@goa.bits-pilani.ac.in</a></p>
+    <p>Email: <a href="mailto:f20221292@goa.bits-pilani.ac.in" style="color:#ffd700;">f20221292@goa.bits-pilani.ac.in</a></p>
   </header>
 
   <nav>
@@ -191,40 +95,28 @@
 
   <section id="education">
     <h2>Education</h2>
-    <p><strong>BITS Pilani KK Birla Goa Campus</strong> (Expected July 2026)</p>
+    <p><strong>BITS Pilani KK Birla Goa Campus</strong> (Expected July 2026)
     <p>B.E. Mechanical Engineering | CGPA: 8.52/10</p>
-    <p>Minor in Supply Chain Analytics | Minor CGPA: 8.5/10</p>
+    <p>Minor in Supply Chain Analytics | Minor CGPA: 8.5/10 (5/5 courses completed)</p>
     <p>Minor courses:</p>
-    <ul>
-      <li>Supply Chain Analytics</li>
-      <li>Quality Control, Assurance and Reliability</li>
-      <li>Engineering Optimization</li>
-      <li>Supply Chain Management</li>
-      <li>Supply Chain Modelling and Empirical Analysis</li>
-    </ul>
+    <li>Supply Chain Analytics</li>
+    <li>Quality Control, Assurance and Reliability</li>
+    <li>Engineering Optimization</li>
+    <li>Supply Chain Management</li>
+    <li>Supply Chain Modelling and Empirical Analysis</li>
+    </p>
   </section>
 
   <section id="experience">
     <h2>Experience</h2>
     <ul>
-      <li>
-        <strong>Research Intern at Indian School of Business (July 2025 - December 2025)</strong>
-        <p>- Working on Assortment Optimization problem using a Mixture of Multinomial Logit Models.</p>
-        <p>- Using MATLAB to calculate individual product revenues, mean utilities, and preference weights to maximize total revenue.</p>
-      </li>
-      <li>
-        <strong>Teaching Assistant (August 2024 - May 2025)</strong>
-        <p>- TA for Applied Thermodynamics and Manufacturing Processes labs; explained experiments, graded students, and evaluated lab reports.</p>
-      </li>
-      <li>
-        <strong>Summer Intern (May 2024 - July 2024)</strong>
-        <p>- Worked at Deccan Mechanical and Chemical Industries, Pune on designing screw and drag chain conveyors.</p>
-      </li>
-      <li>
-        <strong>Project Kratos (Sept 2023 - July 2024)</strong>
-        <p>- Crew member for Mars Rover Life Detection Mechanical Subsystem; developed sustainable soil collection and deposition mechanism.</p>
-        <p>- Team placed 6th globally in International Rover Challenge 2024.</p>
-      </li>
+      <li><strong>Research Intern at Indian School of Business (July 2025 - December 2025)</strong><p>- Working on Assortment Optimization problem using a Mixture of Multinomial Logit Models (Unconstrained and NP-Hard under Operations Research).</p>
+<p>- Using MATLAB to calculate individual product revenues, mean utilities and preference weights, in order to maximize the total revenue generation, so that a best set of products can be offered.</p></li>
+      <li><strong>Teaching Assistant (August 2024 - May 2025)</strong></li><p>- Teaching Assistant for Applied Thermodynamics Laboratory (ME F217), from August 2024 to December 2024. I had been assigned the experiments ‘Reynolds Flow Apparatus’ and ‘Vapour Absorption Refrigeration System’; My duty was to explain the experiments, carry out a viva examination and grade the students according to their performance in the same.</p>
+      <p>- Teaching Assistant for Manufacturing Processes Laboratory (ME F219), from January 2025 to May 2025. I had been assigned the experiments ‘Sand Analysis Using Sieve Machine’ and ‘Moisture Test on Moulding Sand’; My duty is to explain the experiments, correct the submitted lab reports and grade the students according to their performance in the same.</p></li>
+      <li><strong>Summer Intern (May 2024 - July 2024)</strong><p>- Worked as an Summer Intern at Deccan Mechanical and Chemical Industries, Pune for Practice School - I (compulsory summer internship, part of the curriculum), conducted online.</p><p>- Contributed to researching the designing and manufacturing of Screw and Drag Chain conveyors foreasy transport of bulky, raw material and agricultural supply.</p></li>
+      <li><strong>Project Kratos (September 2023 - July 2024)</strong><p>- Worked as a Crew Member under the Life Detection Mechanical Subsystem at Project Kratos, focused on constructing a Mars Rover for university based competitions.</p><p>- Contributed to developing and designing a sustainable soil collection and deposition mechanism for testing and analysis; Engaged in co-operative teamwork to develop a robust system which would enhance the overall performance of the Mars Rover.</p>
+<p>- Our team was placed at the 6th position globally in the International Rover Challenge 2024, conducted in January 2024, at PSGiTech, Coimbatore, Tamil Nadu.</p></li>
     </ul>
   </section>
 
@@ -250,54 +142,54 @@
 
   <section id="contact">
     <h2>Contact</h2>
-    <p>University Email: <a href="mailto:f20221292@goa.bits-pilani.ac.in">f20221292@goa.bits-pilani.ac.in</a></p>
-    <p>Personal Email: <a href="mailto:keya.chincholkar@gmail.com">keya.chincholkar@gmail.com</a></p>
+    <p>Email: <a href="mailto:f20221292@goa.bits-pilani.ac.in">f20221292@goa.bits-pilani.ac.in</a></p>
+    <p>Email: <a href="mailto:keya.chincholkar@gmail.com">keya.chincholkar@gmail.com</a></p>
     <p>Phone: +91-9823398144</p>
-    <p>Address: Tower - 4, G-1 Blue Ridge Township, Hinjewadi, Pune, Maharashtra - 411057</p>
+    <p>Address: Blue Ridge Township, Hinjewadi, Phase - 1, Pune, Maharashtra - 411057</p>
   </section>
 
   <footer>
-    <p>© 2025 Keya Chincholkar</p>
+    <p style="text-align:center; padding:15px; background:#003366; color:white;">
+      © 2025 Keya Chincholkar
+    </p>
   </footer>
 
   <!-- Modals -->
   <div id="modal1" class="modal"><div class="modal-content">
     <span class="close" onclick="closeModal('modal1')">&times;</span>
     <h3>Supply Chain Route Optimization</h3>
-    <p>Supply Chain route optimization using Python: Sweep Algorithm and Ant Colony Optimization.</p>
+    <p>Supply Chain route optimization using various scheduling methods and Python coding: Worked on solving the Travelling Salesman problem for a raw material data-set using Sweep
+Algorithm and Ant Colony Optimization Method in Python.</p>
   </div></div>
 
   <div id="modal2" class="modal"><div class="modal-content">
     <span class="close" onclick="closeModal('modal2')">&times;</span>
     <h3>Network Design & Optimization</h3>
-    <p>Used AnyLogistix to analyse Coca-Cola distribution in India, minimizing cost and maximizing revenue.</p>
+    <p>Used AnyLogistix to study and analyse the distribution and related costs of Coca-Cola bottles and cans in India (focused on revenue generation with minimum travel and distribution costs).</p>
   </div></div>
 
   <div id="modal3" class="modal"><div class="modal-content">
     <span class="close" onclick="closeModal('modal3')">&times;</span>
     <h3>Sustainability Analysis</h3>
-    <p>Jamovi and OpenLCA used to analyse water bottle manufacturing processes and credit card client data.</p>
+    <p>Worked with Jamovi software to establish relations between different variables (payment, bill amount, default payment next month) in credit card clients’ data-set.</p>
+    <p>Analysed water bottle manufacturing processes (Glass vs PET) and transporting them to Hyderabad/Delhi and Australia using OpenLCA software.</p>
   </div></div>
 
+  <!-- Dark mode toggle -->
   <button class="dark-btn" onclick="toggleDark()">🌙 Toggle Mode</button>
 
   <script>
     // Modal functions
-    function openModal(id) { document.getElementById(id).style.display = "flex"; }
-    function closeModal(id) { document.getElementById(id).style.display = "none"; }
+    function openModal(id) {
+      document.getElementById(id).style.display = "flex";
+    }
+    function closeModal(id) {
+      document.getElementById(id).style.display = "none";
+    }
 
-    // Dark mode toggle
-    function toggleDark() { document.body.classList.toggle("dark-mode"); }
-
-    // Pixel star generation
-    for(let i=0;i<50;i++){
-      const star = document.createElement('div');
-      star.className = 'pixel-star';
-      star.style.top = Math.random()*window.innerHeight+'px';
-      star.style.left = Math.random()*window.innerWidth+'px';
-      star.style.animationDuration = 5 + Math.random()*5 + 's';
-      star.style.background = ['#ff79c6','#50fa7b','#8be9fd','#f1fa8c'][Math.floor(Math.random()*4)];
-      document.body.appendChild(star);
+    // Dark mode
+    function toggleDark() {
+      document.body.classList.toggle("dark-mode");
     }
   </script>
 </body>
